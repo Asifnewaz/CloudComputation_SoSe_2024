@@ -2,5 +2,5 @@
 ## Group 16 
 1. Asif Newaz
 2. Md. Saddam Hossain
-3. Mezba Uddin
+3. Mazba Uddin
 
