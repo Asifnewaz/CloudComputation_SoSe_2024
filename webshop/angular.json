@@ -27,9 +27,16 @@
               }
             ],
             "styles": [
+              "./public/resources/plugin/bootstrap-5.2.0-dist/css/bootstrap.min.css",
+              "./public/resources/plugin/font-awesome-6-pro-main/css/all.min.css",
+              "./public/resources/theme/default/th-main.css",
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "./public/resources/plugin/jquery-1.12.4-dist/jquery-1.12.4.min.js",
+              "./public/resources/plugin/bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js",
+              "./public/resources/js/core-script.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
