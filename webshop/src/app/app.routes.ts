@@ -9,11 +9,14 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { SingleProductComponent } from './single-product/single-product.component';
 import { MyCartComponent } from './my-cart/my-cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { UserAreaComponent } from './user-area/user-area.component';
+import { OrderStatusComponent } from './order-status/order-status.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'about', component: AboutUsComponent },
     { path: 'contact', component: ContactUsComponent },
+    { path: 'user-area', component: UserAreaComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'all-categories', component: AllCategoriesComponent },
@@ -21,5 +24,7 @@ export const routes: Routes = [
     { path: 'product-details', component: SingleProductComponent },
     { path: 'my-cart', component: MyCartComponent },
     { path: 'checkout', component: CheckoutComponent },
+    { path: 'order-status', component: OrderStatusComponent },
 
 ];
+

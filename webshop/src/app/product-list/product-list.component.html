@@ -12,7 +12,7 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-12">
+            <div *ngFor="let item of [1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8]" class="col-lg-3 col-md-6 col-12">
                 <div class="single-product">
                     <div class="product-image">
                         <img src="https://fakeimg.pl/242x242/503ec2/121111?font=noto-serif" alt="#">
@@ -24,27 +24,6 @@
                         <span class="category">Watches </span>
                         <h4 class="title">
                             <a [routerLink]="['/product-details']">Xiaomi Mi Band 5</a>
-                        </h4>
-                        <div class="price">
-                            <span>$199.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-lg-3 col-md-6 col-12">
-                <div class="single-product">
-                    <div class="product-image">
-                        <img src="https://fakeimg.pl/242x242/503ec2/121111?font=noto-serif" alt="#">
-                        <div class="button">
-                            <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <span class="category">Watches </span>
-                        <h4 class="title">
-                            <a href="product-grids.html">Xiaomi Mi Band 5</a>
                         </h4>
                         <div class="price">
                             <span>$199.00</span>
