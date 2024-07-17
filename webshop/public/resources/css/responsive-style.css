@@ -1,0 +1,14 @@
+/*xs applicable only*/
+@media only screen and (min-width: 0px) and (max-width: 540px) {
+    
+}
+
+/*sm applicable only*/
+@media only screen and (min-width: 541px) and (max-width: 720px) {
+
+}
+
+/*md,lg,xl,xxl only*/
+@media only screen and (min-width: 721px) and (max-width: 1320px) {
+    
+}

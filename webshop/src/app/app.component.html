@@ -1,0 +1,234 @@
+<header class="header navbar-area">
+    <div class="topbar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="top-left">
+                        <ul class="menu-top-link">
+                            <li>
+                                <div class="select-position">
+                                    <select id="select5">
+                                        <option value="0" selected>English</option>
+                                    </select>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="top-middle">
+                        <ul class="useful-links">
+                            <li><a [routerLink]="['/']">Home</a></li>
+                            <li><a [routerLink]="['/about']">About Us</a></li>
+                            <li><a [routerLink]="['/contact']">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="top-end">
+                        <div class="user">
+                            <a [routerLink]="['/user-area']" class="text-light">
+                                <i class="fa-light fa-circle-user"></i>
+                                Mazba
+                            </a>
+                        </div>
+                        <ul class="user-login">
+                            <li>
+                                <a [routerLink]="['/login']">Sign In</a>
+                            </li>
+                            <li>
+                                <a [routerLink]="['/register']">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== -->
+    <!-- scroll and fixed -->
+
+    <div id="siteSkikyPart" class="header-middle">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-3 col-md-3 col-7">
+                    <a class="navbar-brand" [routerLink]="['/']">
+                        <img src="./resources/images/logov2.png" alt="Logo rounded-pill">
+                    </a>
+                </div>
+                <div class="col-lg-5 col-md-7 d-xs-none">
+                    <div class="main-menu-search">
+                        <div class="navbar-search search-style-5">
+                            <div class="search-input">
+                                <input type="text" placeholder="Search">
+                            </div>
+                            <div class="search-btn">
+                                <button>
+                                    <i class="fa-light fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-2 col-5">
+                    <div class="middle-right-area">
+                        <div class="nav-hotline">
+                            <i class="fa-light fa-headset"></i>
+                            <h3>Hotline:
+                                <span>(+49) 0176 721 44365</span>
+                            </h3>
+                        </div>
+                        <div class="navbar-cart">
+                            <div class="wishlist d-block d-sm-block d-md-none">
+                                <a href="javascript:void(0)">
+                                    <i class="fa-light fa-magnifying-glass"></i>
+                                </a>
+                            </div>
+
+                            <div class="cart-items">
+                                <a [routerLink]="['/my-cart']" class="main-btn">
+                                    <i class="fa-light fa-bag-shopping"></i>
+                                    <span class="total-items">2</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg bg-light custom-nav">
+        <div class="container">
+            <button class="navbar-toggler mobile-icon" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-link-left">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" [routerLink]="['/all-categories']">
+                            <i class="fa-solid fa-bars"></i> All Categories </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
+                            data-bs-target="#submenu-1-2" aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation">Pages</a>
+                        <ul class="sub-menu collapse" id="submenu-1-2">
+                            <li class="nav-item"><a [routerLink]="['/']" >Home</a></li>
+                            <li class="nav-item"><a [routerLink]="['/about']" >about</a></li>
+                            <li class="nav-item"><a [routerLink]="['/contact']" >contact</a></li>
+                            <li class="nav-item"><a [routerLink]="['/user-area']" >user-area</a></li>
+                            <li class="nav-item"><a [routerLink]="['/login']" >login</a></li>
+                            <li class="nav-item"><a [routerLink]="['/register']" >register</a></li>
+                            <li class="nav-item"><a [routerLink]="['/all-categories']" >all-categories</a></li>
+                            <li class="nav-item"><a [routerLink]="['/product-list']" >product-list</a></li>
+                            <li class="nav-item"><a [routerLink]="['/product-details']" >product-details</a></li>
+                            <li class="nav-item"><a [routerLink]="['/my-cart']" >my-cart</a></li>
+                            <li class="nav-item"><a [routerLink]="['/checkout']" >checkout</a></li>
+                            <li class="nav-item"><a [routerLink]="['/order-status']" >order-status</a></li>                            
+                        </ul>
+                    </li>
+
+
+                </ul>
+                <div class="d-flex">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Follow Us:
+                                <span class="follow-icon"><i class="fa-brands fa-facebook-f"></i></span>
+                                <span class="follow-icon"><i class="fa-brands fa-twitter"></i></span>
+                                <span class="follow-icon"><i class="fa-brands fa-youtube"></i></span>
+                                <span class="follow-icon"><i class="fa-brands fa-instagram"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+
+<router-outlet></router-outlet>
+
+
+
+<footer class="footer">
+
+    <div class="footer-middle">
+        <div class="container">
+            <div class="bottom-inner">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-footer f-contact">
+                            <h3>Get In Touch With Us</h3>
+                            <p class="phone">Phone: +1 (900) 33 169 7720</p>
+                            <ul>
+                                <li><span>Monday-Friday: </span> 9.00 am - 8.00 pm</li>
+                                <li><span>Saturday: </span> 10.00 am - 6.00 pm</li>
+                            </ul>
+                            <p class="mail">
+                                <a>mazba09&#64;gmail.com</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-footer f-link">
+                            <h3>Information</h3>
+                            <ul>
+                                <li><a href="javascript:void(0)">About Us</a></li>
+                                <li><a href="javascript:void(0)">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-footer f-link">
+                            <h3>Shop Departments</h3>
+                            <ul>
+                                <li><a href="javascript:void(0)">Computers & Accessories</a></li>
+                                <li><a href="javascript:void(0)">Smartphones & Tablets</a></li>
+                                <li><a href="javascript:void(0)">TV, Video & Audio</a></li>
+                                <li><a href="javascript:void(0)">Cameras, Photo & Video</a></li>
+                                <li><a href="javascript:void(0)">Headphones</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="inner-content">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 col-12">
+                        <div class="payment-gateway">
+                            <span>We Accept:</span>
+                            <img src="https://fakeimg.pl/200x25/503ec2/121111?font=noto-serif" alt="#">
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <div class="copyright">
+                            <p>Designed and Developed by<a href="https://graygrids.com/" rel="nofollow"
+                                    target="_blank">GrayGrids</a></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <a href="#" class="">
+                            <i class="fa-light fa-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
