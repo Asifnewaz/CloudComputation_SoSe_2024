@@ -1,6 +1,6 @@
 package com.asif.cc_summer.controllers;
 
-import com.asif.cc_summer.entity.Category;
+import com.asif.cc_summer.entity.ProductCategory;
 import com.asif.cc_summer.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -17,7 +17,7 @@ public class CategoryController {
 
     @PostMapping(value ="/add", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addCategory(@RequestParam String categoryName,@RequestParam String categoryImage) {
-        Category response = categoryService.addService(categoryName, categoryImage);
+        ProductCategory response = categoryService.addService(categoryName, categoryImage);
         return ResponseEntity.ok(response);
     }
 
