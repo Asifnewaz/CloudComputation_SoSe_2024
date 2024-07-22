@@ -8,4 +8,9 @@ import lombok.Data;
 public class Category extends BaseClass {
     private String categoryName;
     private String image;
+
+    public Category(String categoryName, String image){
+        this.categoryName = categoryName;
+        this.image = image;
+    }
 }
