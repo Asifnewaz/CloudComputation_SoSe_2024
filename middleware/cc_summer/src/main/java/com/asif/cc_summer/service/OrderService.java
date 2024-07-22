@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class OrderService {
@@ -13,5 +15,8 @@ public class OrderService {
 
     public OrderedProduct save(OrderedProduct order) {
         return orderRepository.save(order);
+    }
+    public List<OrderedProduct> findAll() {
+        return orderRepository.findAll();
     }
 }

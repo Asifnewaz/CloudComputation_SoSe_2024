@@ -6,10 +6,9 @@ import com.asif.cc_summer.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,6 +24,13 @@ public class OrderController {
         orderedProduct.setUserID(userID);
         OrderedProduct response = orderService.save(orderedProduct);
         return ResponseEntity.ok("Added to cart");
+
+
+    }
+    @GetMapping(value = "/getOrderList", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getOrderCategory() {
+        List<OrderedProduct> list= orderService.findAll();
+        return ResponseEntity.ok(list);
     }
 
 
