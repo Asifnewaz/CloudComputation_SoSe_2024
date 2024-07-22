@@ -14,9 +14,16 @@ public class CategoryService {
 
 
    public ProductCategory addService(String categoryName, String categoryImage){
+       // creating entity for repository
        ProductCategory category = new ProductCategory();
+
+       //setting category name into entity
        category.setCategoryName(categoryName);
+
+       //setting image name into entity
        category.setImage(categoryImage);
+
+       // saving entity into database
       return categoryRepository.save(category);
    }
     public List<ProductCategory> getAllCategory(){

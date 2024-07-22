@@ -6,5 +6,6 @@ import lombok.Data;
 @Data
 @Entity
 public class OrderedProduct extends BaseClass {
-
+    private Integer productID;
+    private Integer userID;
 }
