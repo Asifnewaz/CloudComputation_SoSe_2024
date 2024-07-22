@@ -5,10 +5,10 @@ import com.asif.cc_summer.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "api/category")
@@ -19,6 +19,14 @@ public class CategoryController {
     public ResponseEntity<?> addCategory(@RequestParam String categoryName,@RequestParam String categoryImage) {
         ProductCategory response = categoryService.addService(categoryName, categoryImage);
         return ResponseEntity.ok(response);
+    }
+
+
+    @GetMapping(value ="/get", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getCategory() {
+
+        List<ProductCategory> list = categoryService.getAllCategory();
+        return ResponseEntity.ok(list);
     }
 
 
