@@ -11,6 +11,7 @@ export class DataServiceService {
 
   private handleError(err: HttpErrorResponse): Observable<never> {
     console.log("header response error, was not 200");
+    alert("Unknown error! Server response is not 200.");
     return throwError(() => err);
   }
 
@@ -53,5 +54,5 @@ export class DataServiceService {
         catchError(this.handleError)
       );
   }
-  
+
 }

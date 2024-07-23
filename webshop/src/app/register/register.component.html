@@ -11,27 +11,22 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="reg-fn">First Name</label>
-                                <input class="form-control" type="text" id="reg-fn" required>
+                                <input class="form-control" type="text" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="reg-ln">Last Name</label>
-                                <input class="form-control" type="text" id="reg-ln" required>
+                                <input class="form-control" type="text" required>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-12">
                             <div class="form-group">
                                 <label for="reg-email">E-mail Address</label>
-                                <input class="form-control" type="email" id="reg-email" required>
+                                <input class="form-control" type="email" required>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="reg-phone">Phone Number</label>
-                                <input class="form-control" type="text" id="reg-phone" required>
-                            </div>
-                        </div>
+
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="reg-pass">Password</label>
@@ -47,7 +42,7 @@
                         <div class="button">
                             <button class="btn" type="submit">Register</button>
                         </div>
-                        <p class="outer-link">Already have an account? <a href="login.html">Login Now</a>
+                        <p class="outer-link">Already have an account? <a [routerLink]="['/login']">Login Now</a>
                         </p>
                     </form>
                 </div>

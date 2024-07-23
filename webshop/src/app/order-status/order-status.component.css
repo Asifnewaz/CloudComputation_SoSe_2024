@@ -48,7 +48,7 @@
 }
 
 .track .step.active:before {
-    background: #0167f3
+    background: #EB5525;
 }
 
 .track .step::before {
@@ -61,7 +61,7 @@
 }
 
 .track .step.active .icon {
-    background: #0167f3;
+    background: #EB5525;
     color: #fff
 }
 
@@ -125,18 +125,4 @@ ul.row-sm {
 p {
     margin-top: 0;
     margin-bottom: 1rem
-}
-
-.btn-warning {
-    color: #ffffff;
-    background-color: #0167f3;
-    border-color: #0167f3;
-    border-radius: 1px
-}
-
-.btn-warning:hover {
-    color: #ffffff;
-    background-color: #0167f3;
-    border-color: #0167f3;
-    border-radius: 1px
 }

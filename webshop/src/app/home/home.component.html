@@ -1,10 +1,11 @@
+<app-loading [isLoading]="isLoading"></app-loading>
+
 <section class="hero-area">
     <div class="container">
         <div class="row">
             <div class="col-12 custom-padding-right">
 
-
-                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+                <div id="carouselExampleCaptions" class="carousel slide slide-margin" data-bs-ride="false">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
                             class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -15,25 +16,13 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="https://hatil-image.s3.ap-southeast-1.amazonaws.com/HomePageImage/Bed_16x9_Jan24.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h1>First slide label</h1>
-                                <p>Some representative placeholder content for the first slide.</p>
-                            </div>
+                            <img src="./resources/images/home-banner/1.png" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="https://hatil-image.s3.ap-southeast-1.amazonaws.com/HomePageImage/Living_16x9_Jan24.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h1>Second slide label</h1>
-                                <p>Some representative placeholder content for the second slide.</p>
-                            </div>
+                            <img src="./resources/images/home-banner/2.png" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="https://hatil-image.s3.ap-southeast-1.amazonaws.com/HomePageImage/Dining_16x9_Jan24.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h1>Third slide label</h1>
-                                <p>Some representative placeholder content for the third slide.</p>
-                            </div>
+                            <img src="./resources/images/home-banner/3.png" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
@@ -59,9 +48,6 @@
             <div class="col-12">
                 <div class="section-title">
                     <h2>Featured Categories</h2>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                        suffered alteration in some form.
-                    </p>
                 </div>
             </div>
         </div>
@@ -69,13 +55,14 @@
             <div class="col-12">
                 <div class="categories-product">
                     <div class="categorySlider d-flex align-items-center justify-content-between">
-
-                        <div *ngFor="let item of [].constructor(7); let i = index" class="">
+                        <div *ngFor="let item of [].constructor(6); let i = index" class="">
                             <img src="https://fakeimg.pl/150x150/7a203c/121111?font=noto-serif" alt="#">
                         </div>
-
                     </div>
                 </div>
+                <p class="text-end">
+                    <a [routerLink]="['/all-categories']">All categories</a>
+                </p>
             </div>
         </div>
     </div>
@@ -88,9 +75,6 @@
             <div class="col-12">
                 <div class="section-title">
                     <h2>Trending Product</h2>
-                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                        suffered alteration in some form.
-                    </p>
                 </div>
             </div>
         </div>

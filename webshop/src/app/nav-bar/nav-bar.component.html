@@ -1,0 +1,101 @@
+<nav class="navbar navbar-expand-lg bg-light fixed-top nav-main-body" id="navbarActionSinglePageApplication">
+    <div class="container">
+        <a [routerLink]="['/']" class="navbar-brand"><span class="logo-main">LowTech</span> <span
+                class="gmbh-text">GmbH</span></a>
+
+        <a class="navbar-toggler toggle-nav-btn cart-link" href="#">
+            <span class="cart-products-number-mobile">2</span>
+            <div class="navbar-icon-text">
+                <span class="nav-icon-link">
+                    <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+                </span>
+            </div>
+        </a>
+
+        <button class="navbar-toggler toggle-nav-btn" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <form class="d-flex" role="search">
+                <input class="form-control search-input-nav search-input-icon-border-color no-active-focus"
+                    type="search" placeholder="Search" aria-label="Search">
+                <button class="btn search-input-icon search-input-icon-border-color no-active-focus" type="submit"><i
+                        class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">
+                        <i class="fa-light fa-table"></i> Home</a>
+                </li> -->
+            </ul>
+
+            <div class="d-flex">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a [routerLink]="['/all-categories']" class="nav-link">
+                            <div class="navbar-icon-text">
+                                <span class="nav-icon-link">
+                                    <i class="fa-solid fa-table-list"></i>
+                                </span>
+                                <span class="navbar-text nav-text-link">Category</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a [routerLink]="['/contact']" class="nav-link">
+                            <div class="navbar-icon-text">
+                                <span class="nav-icon-link">
+                                    <i class="fa-solid fa-headset"></i>
+                                </span>
+                                <span class="navbar-text nav-text-link">Help & Contact</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a [routerLink]="['/login']" class="nav-link">
+                            <div class="navbar-icon-text">
+                                <span class="nav-icon-link">
+                                    <i class="fa-solid fa-user"></i>
+                                </span>
+                                <span class="navbar-text nav-text-link">Login</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a [routerLink]="['/register']" class="nav-link">
+                            <div class="navbar-icon-text">
+                                <span class="nav-icon-link">
+                                    <i class="fa-solid fa-address-card"></i>
+                                </span>
+                                <span class="navbar-text nav-text-link">Registration</span>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a [routerLink]="['/my-cart']" class="nav-link cart-link">
+                            <span class="cart-products-number">2</span>
+                            <div class="navbar-icon-text">
+                                <span class="nav-icon-link">
+                                    <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+                                </span>
+                                <span class="navbar-text nav-text-link">Shopping cart</span>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
