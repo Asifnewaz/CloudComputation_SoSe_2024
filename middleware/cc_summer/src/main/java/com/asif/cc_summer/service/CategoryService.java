@@ -18,7 +18,7 @@ public class CategoryService {
        ProductCategory category = new ProductCategory();
 
        //setting category name into entity
-       category.setCategoryName(categoryName);
+       category.setName(categoryName);
 
        //setting image name into entity
        category.setImage(categoryImage);

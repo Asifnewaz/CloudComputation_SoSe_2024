@@ -19,8 +19,8 @@ public class CartController {
     public ResponseEntity<?> addToCart(@RequestParam Integer userID,
                                          @RequestParam Integer productID) {
         Cart orderedProduct = new Cart();
-        orderedProduct.setProductID(productID);
-        orderedProduct.setUserID(userID);
+        orderedProduct.setUser_id(userID);
+        orderedProduct.setProduct_id(productID);
         Cart response = orderService.save(orderedProduct);
         return ResponseEntity.ok("Added to cart");
 
