@@ -14,7 +14,7 @@ public class ProductCategory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String categoryName;
+    private String name;
     private String image;
 
 }
