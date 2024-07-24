@@ -7,11 +7,11 @@ import lombok.Data;
 @Entity
 public class Product extends BaseClass{
 
-    private String Product_id;
-    private String Product_name;
-    private String Category_name;
-    private String Product_images;
-    private Double Product_price;
-    private String Full_description;
-    private Integer Available_product;
+    private String product_id;
+    private String name;
+    private String category_name;
+    private String image;
+    private Double price;
+    private String full_description;
+    private Integer available_product;
 }

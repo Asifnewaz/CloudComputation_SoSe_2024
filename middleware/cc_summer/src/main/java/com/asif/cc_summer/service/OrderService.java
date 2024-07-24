@@ -1,9 +1,8 @@
 package com.asif.cc_summer.service;
 
-import com.asif.cc_summer.entity.OrderedProduct;
+import com.asif.cc_summer.entity.Cart;
 import com.asif.cc_summer.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,10 +12,10 @@ import java.util.List;
 public class OrderService {
     private final OrderRepository orderRepository;
 
-    public OrderedProduct save(OrderedProduct order) {
+    public Cart save(Cart order) {
         return orderRepository.save(order);
     }
-    public List<OrderedProduct> findAll() {
+    public List<Cart> findAll() {
         return orderRepository.findAll();
     }
 }
