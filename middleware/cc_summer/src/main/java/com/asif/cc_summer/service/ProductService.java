@@ -26,7 +26,7 @@ public class ProductService {
         Product obj = new Product();
         obj.setName(productDto.getName());
         obj.setPrice(productDto.getPrice());
-        obj.setProductDescription(productDto.getProductDescription());
+        obj.setFull_description(productDto.getProductDescription());
 
         return productRepository.save(obj);
     }

@@ -1,7 +1,7 @@
 package com.asif.cc_summer.controllers;
 
 import com.asif.cc_summer.entity.Cart;
-import com.asif.cc_summer.service.OrderService;
+import com.asif.cc_summer.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,24 +11,30 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(value = "/api/order")
+@RequestMapping(value = "/api/cart")
 public class CartController {
-    private final OrderService orderService;
+    private final CartService cartService;
 
     @PostMapping(value ="/addToCart", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> addToCart(@RequestParam Integer userID,
-                                         @RequestParam Integer productID) {
+    public ResponseEntity<?> addToCart(@RequestParam Integer user_id,
+                                         @RequestParam Integer product_id, @RequestParam Integer quantity) {
         Cart orderedProduct = new Cart();
-        orderedProduct.setUser_id(userID);
-        orderedProduct.setProduct_id(productID);
-        Cart response = orderService.save(orderedProduct);
+        orderedProduct.setUser_id(user_id);
+        orderedProduct.setProduct_id(product_id);
+        orderedProduct.setQuantity(quantity);
+        Cart response = cartService.save(orderedProduct);
         return ResponseEntity.ok("Added to cart");
 
 
     }
-    @GetMapping(value = "/getOrderList", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getOrderCategory() {
-        List<Cart> list= orderService.findAll();
+    @PostMapping(value="/cartList", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> cartList(@RequestParam Integer user_id){
+        List<Cart> list= cartService.findAll();
+        return ResponseEntity.ok("Added Cart List");
+    }
+    @GetMapping(value = "/getCartList", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getCartCategory() {
+        List<Cart> list= cartService.findAll();
         return ResponseEntity.ok(list);
     }
 
