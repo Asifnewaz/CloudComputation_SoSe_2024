@@ -1,5 +1,6 @@
 package com.asif.cc_summer.controllers;
 
+import com.asif.cc_summer.dto.response.CartListResponse;
 import com.asif.cc_summer.entity.Cart;
 import com.asif.cc_summer.service.CartService;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +8,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -29,8 +31,10 @@ public class CartController {
     }
     @PostMapping(value="/cartList", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> cartList(@RequestParam Integer user_id){
-        List<Cart> list= cartService.findAll();
-        return ResponseEntity.ok("Added Cart List");
+        List<CartListResponse> list = cartService.cartListResponse(user_id);
+
+
+        return ResponseEntity.ok(list);
     }
     @GetMapping(value = "/getCartList", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getCartCategory() {
