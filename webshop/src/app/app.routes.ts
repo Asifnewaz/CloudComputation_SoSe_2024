@@ -13,17 +13,17 @@ import { UserAreaComponent } from './user-area/user-area.component';
 import { OrderStatusComponent } from './order-status/order-status.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'about', component: AboutUsComponent },
-    { path: 'contact', component: ContactUsComponent },
-    { path: 'user-area', component: UserAreaComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'all-categories', component: AllCategoriesComponent },
-    { path: 'product-list', component: ProductListComponent },
-    { path: 'product-details', component: SingleProductComponent },
-    { path: 'my-cart', component: MyCartComponent },
-    { path: 'checkout', component: CheckoutComponent },
+    { path: '', component: HomeComponent },  //api no need
+    { path: 'about', component: AboutUsComponent },  //api no need
+    { path: 'contact', component: ContactUsComponent }, //api no need
+    { path: 'user-area', component: UserAreaComponent }, 
+    { path: 'login', component: LoginComponent }, //api ready
+    { path: 'register', component: RegisterComponent }, //api no need
+    { path: 'all-categories', component: AllCategoriesComponent }, //api ready
+    { path: 'product-list', component: ProductListComponent }, //api ready
+    { path: 'product-details', component: SingleProductComponent }, 
+    { path: 'my-cart', component: MyCartComponent }, //api ready
+    { path: 'checkout', component: CheckoutComponent }, //api ready
     { path: 'order-status', component: OrderStatusComponent },
 
 ];

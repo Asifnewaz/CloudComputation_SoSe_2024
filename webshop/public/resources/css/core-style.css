@@ -1,3 +1,7 @@
+.cursor-pointer {
+    cursor: pointer;
+}
+
 .no-active-focus:active,
 .no-active-focus:focus,
 .no-active-focus:hover {
@@ -60,6 +64,11 @@
     padding: 10px 0;
 }
 
+.nav-drp-link {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
 .search-input-nav {
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
@@ -101,3 +110,16 @@
     border-radius: 7px;
     font-size: 12px;
 }
+
+.category-image {
+    height: 150px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.category-image-a {
+   display: block;
+}
+

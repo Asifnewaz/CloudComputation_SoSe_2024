@@ -13,29 +13,35 @@ import { LoadingComponent } from '../loading/loading.component';
 })
 export class HomeComponent implements OnInit {
 
-  public isLoading: boolean = true;
-
-  category: any = [];
+  public isLoading: boolean = false;
+  public category: any = [];
+  public productList: any = [];
 
   constructor(private dataService: DataServiceService) { }
 
   ngOnInit(): void {
     this.fetchAllCategory();
+    // this.fetchAllProduct();
   }
 
   fetchAllCategory() {
-    var url = 'https://official-joke-api.appspot.com/random_joke';
+    this.isLoading = true;
+    var url = 'categorylist';
     this.dataService.getData(url)
-      .subscribe(data => {
-        console.log(data);
-
+      .subscribe(response => {
         this.isLoading = false;
-        // this.category = data.body.data;
-        // if (this.category) {
-        //   this.category = this.post.reverse();
-        // }
+        this.category = response.body.data;
       });
+  }
 
+  fetchAllProduct() {
+    this.isLoading = true;
+    var url = 'productist';
+    this.dataService.getData(url)
+      .subscribe(response => {
+        this.isLoading = false;
+        this.productList = response.body.data;
+      });
   }
 
 }

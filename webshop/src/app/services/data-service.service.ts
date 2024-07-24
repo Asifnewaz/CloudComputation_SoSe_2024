@@ -7,6 +7,8 @@ import { Observable, throwError, map, catchError } from 'rxjs';
 })
 export class DataServiceService {
 
+  public baseURL = "https://1d9d857a-4e50-4c6c-8dcf-ca3efeab783d.mock.pstmn.io/";
+
   constructor(private http: HttpClient) { }
 
   private handleError(err: HttpErrorResponse): Observable<never> {
@@ -16,7 +18,7 @@ export class DataServiceService {
   }
 
   getData(url: string, auth: boolean = false): Observable<any> {
-    var url = url;
+    var url = this.baseURL + url;
     var setHeaders: any;
 
     if (auth) {
@@ -36,7 +38,7 @@ export class DataServiceService {
   }
 
   postData(url: string, auth: boolean = false, postData: object): Observable<any> {
-    var url = url;
+    var url = this.baseURL + url;
     var setHeaders: any;
 
     if (auth) {

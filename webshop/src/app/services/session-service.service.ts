@@ -14,9 +14,9 @@ export class SessionServiceService {
 
   storeSession(data: any) {
     var sessionData = {
-      "tokens": "",
-      "userName": "",
-      "userAvatar": ""
+      "tokens": data.userID,
+      "userName": data.name,
+      "userAvatar": data.image
     };
 
     if (this.isBrowser) {
@@ -36,7 +36,7 @@ export class SessionServiceService {
     window.location.reload();
   }
 
-  isLogdin() {
+  isLogin() {
     var accessTokens = null;
     if (this.isBrowser) {
       accessTokens = localStorage.getItem("accessTokensNg");
@@ -58,8 +58,21 @@ export class SessionServiceService {
       return "";
     } else {
       var tokens = JSON.parse(accessTokens);
-      var accessToken = tokens.tokens.accessToken;
+      var accessToken = tokens.tokens;
       return accessToken;
+    }
+  }
+
+  getSessiondata() {
+    var accessTokens = null;
+    if (this.isBrowser) {
+      accessTokens = localStorage.getItem("accessTokensNg");
+    }
+    if (accessTokens == null) {
+      return "";
+    } else {
+      var sessiondata = JSON.parse(accessTokens);
+      return sessiondata;
     }
   }
 }
