@@ -1,0 +1,67 @@
+<div class="account-login section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-12">
+                <div class="card">
+                    <div class="card-header">
+                        Total payment: €1200
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card details</h5>
+                        <div class="mb-3">
+                            <label class="form-label">Card Name</label>
+                            <input type="text" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Card Number</label>
+                            <input type="text" class="form-control" maxlength="16">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Expiration</label>
+                                    <input type="text" [ngModel]="expiration" (ngModelChange)="modelChange($event)"
+                                        class="form-control" maxlength="5">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="mb-3">
+                                    <label class="form-label">CVV</label>
+                                    <input type="text" class="form-control" maxlength="3">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="button">
+                            <button type="button" (click)="displayLoadingPayment()" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">Pay now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <div *ngIf="paymentStatus;else displaySuccessMessage" class="">
+                    <h4>Payment processing...</h4>
+                    <h1 class="text-center mt-5"><i class="fas fa-spinner fa-pulse"></i></h1>
+                </div>
+                
+                <ng-template #displaySuccessMessage>
+                    <div class="">
+                        <h4 class="text-success">Payment successful. <small>Thank you for your payment.</small></h4>
+                        <p class="mt-2"><a href="">Track your order</a></p>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>
