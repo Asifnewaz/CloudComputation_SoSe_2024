@@ -15,19 +15,28 @@ import java.util.List;
 public class LoginService {
     private final LoginRepository loginRepository;
 
-    private static final String CORRECT_USERNAME = "admin";
-    private static final String CORRECT_PASSWORD = "password123";
+    public UserEntity createUser(String Username, String Password) {
 
-    public String verifyLogin(String Username, String Password) {
+       UserEntity userEntity = new UserEntity();
+       userEntity.setUser_name(Username);
+       userEntity.setPassword(Password);
+
+        return  loginRepository.save(userEntity);
+    }
+
+    public Boolean verifyLogin(String Username, String Password) {
 
         List<UserEntity> allData = loginRepository.findAll();
+        Boolean credentialMatched = false;
+
         for (int i = 0; i < allData.size(); i++) {
             UserEntity login =  allData.get(i);
-            if (login.getUser_name().equals(Username)) {
-                return "Login successful!";
+            if (login.getUser_name().equals(Username) && login.getPassword().equals(Password)) {
+                credentialMatched = true;
+                break;
             }
         }
 
-        return "Invalid username or password. Login failed.";
+        return  credentialMatched;
     }
-    }
+}
