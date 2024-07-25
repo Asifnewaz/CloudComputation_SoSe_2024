@@ -18,7 +18,12 @@ public class CategoryController {
 
     @PostMapping(value ="/add", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addCategory(@RequestParam String categoryName,@RequestParam String categoryImage) {
-        ProductCategory response = categoryService.addService(categoryName, categoryImage);
+        ProductCategory category = categoryService.addService(categoryName, categoryImage);
+
+        BaseResponseDto response = new BaseResponseDto();
+        response.statusCode = 200;
+        response.success_message = "Category added successfully";
+        response.data = category;
         return ResponseEntity.ok(response);
     }
 
