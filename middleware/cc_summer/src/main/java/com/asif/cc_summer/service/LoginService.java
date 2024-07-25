@@ -15,8 +15,14 @@ import java.util.List;
 public class LoginService {
     private final LoginRepository loginRepository;
 
-    private static final String CORRECT_USERNAME = "admin";
-    private static final String CORRECT_PASSWORD = "password123";
+    public UserEntity createUser(String Username, String Password) {
+
+       UserEntity userEntity = new UserEntity();
+       userEntity.setUser_name(Username);
+       userEntity.setPassword(Password);
+
+        return  loginRepository.save(userEntity);
+    }
 
     public String verifyLogin(String Username, String Password) {
 
@@ -30,4 +36,4 @@ public class LoginService {
 
         return "Invalid username or password. Login failed.";
     }
-    }
+}
