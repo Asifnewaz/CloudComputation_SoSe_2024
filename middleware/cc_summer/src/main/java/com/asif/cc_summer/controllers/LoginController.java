@@ -42,14 +42,24 @@ public class LoginController {
 
         BaseResponseDto response = new BaseResponseDto();
         response.statusCode = 200;
-        response.success_message = "Category added successfully";
+        response.success_message = "Registration successful";
         response.data = entity;
         return ResponseEntity.ok(response);
     }
 
     @PostMapping(value = "/login")
-    public String login(@RequestParam String username, @RequestParam String password) {
-        return loginService.verifyLogin(username, password);
+    public ResponseEntity<?> login(@RequestParam String username, @RequestParam String password) {
+        Boolean credentialMatched = loginService.verifyLogin(username, password);
+
+        BaseResponseDto response = new BaseResponseDto();
+        if (credentialMatched) {
+            response.statusCode = 200;
+            response.success_message = "Login successful";
+        } else {
+            response.statusCode = 400;
+            response.error_message = "Invalid username or password";
+        }
+        return ResponseEntity.ok(response);
     }
 }
 

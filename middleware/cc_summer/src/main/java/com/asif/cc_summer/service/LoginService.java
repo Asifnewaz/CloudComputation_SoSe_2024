@@ -24,16 +24,19 @@ public class LoginService {
         return  loginRepository.save(userEntity);
     }
 
-    public String verifyLogin(String Username, String Password) {
+    public Boolean verifyLogin(String Username, String Password) {
 
         List<UserEntity> allData = loginRepository.findAll();
+        Boolean credentialMatched = false;
+
         for (int i = 0; i < allData.size(); i++) {
             UserEntity login =  allData.get(i);
-            if (login.getUser_name().equals(Username)) {
-                return "Login successful!";
+            if (login.getUser_name().equals(Username) && login.getPassword().equals(Password)) {
+                credentialMatched = true;
+                break;
             }
         }
 
-        return "Invalid username or password. Login failed.";
+        return  credentialMatched;
     }
 }
