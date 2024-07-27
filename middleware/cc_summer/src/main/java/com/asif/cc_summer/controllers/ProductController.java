@@ -23,7 +23,7 @@ public class ProductController {
 
         BaseResponseDto response = new BaseResponseDto();
         response.statusCode = 200;
-        response.success_message = "Category added successfully";
+        response.success_message = "Product added successfully";
         response.data = obj;
         return ResponseEntity.ok(response);
     }
@@ -34,7 +34,6 @@ public class ProductController {
         Product obj = productService.getProductById(Long.valueOf(productID));
         BaseResponseDto response = new BaseResponseDto();
         response.statusCode = 200;
-        response.success_message = "Category added successfully";
         response.data = obj;
 
         return ResponseEntity.ok(response);
@@ -46,7 +45,6 @@ public class ProductController {
         List<Product> products = productService.getAllProducts();
         BaseResponseDto response = new BaseResponseDto();
         response.statusCode = 200;
-        response.success_message = "Category added successfully";
         response.data = products;
         return ResponseEntity.ok(response);
     }
