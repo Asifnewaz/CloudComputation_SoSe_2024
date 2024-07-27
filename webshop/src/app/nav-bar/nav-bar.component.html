@@ -71,8 +71,10 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item nav-drp-link" href="#">Your account</a></li>
-                            <li><a class="dropdown-item nav-drp-link" href="#">Your orders</a></li>
+                            <li><a [routerLink]="['./user-area']" class="dropdown-item nav-drp-link">Your account</a>
+                            </li>
+                            <li><a [routerLink]="['./order-list']" class="dropdown-item nav-drp-link">Your orders</a>
+                            </li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
