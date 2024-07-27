@@ -19,8 +19,8 @@ public class CartController {
     private final CartService cartService;
 
     @PostMapping(value ="/addToCart", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> addToCart(@RequestParam Integer user_id,
-                                         @RequestParam Integer product_id, @RequestParam Integer quantity) {
+    public ResponseEntity<?> addToCart(@RequestParam Long user_id,
+                                         @RequestParam Long product_id, @RequestParam Integer quantity) {
         Cart orderedProduct = new Cart();
         orderedProduct.setUser_id(user_id);
         orderedProduct.setProduct_id(product_id);
@@ -35,7 +35,7 @@ public class CartController {
 
     }
     @PostMapping(value="/cartList", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> cartList(@RequestParam Integer user_id){
+    public ResponseEntity<?> cartList(@RequestParam Long user_id){
         List<CartListResponse> list = cartService.cartListResponse(user_id);
 
         BaseResponseDto response = new BaseResponseDto();

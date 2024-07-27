@@ -12,7 +12,7 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Integer product_id;
-    private Integer user_id;
+    private Long product_id;
+    private Long user_id;
     private Integer quantity;
 }

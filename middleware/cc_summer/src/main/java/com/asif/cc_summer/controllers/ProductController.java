@@ -17,9 +17,14 @@ import java.util.List;
 public class ProductController {
     private final ProductService productService;
 
-    @PostMapping(value = "/save", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> saveProduct(@RequestParam ProductDto product) {
-        Product obj = productService.saveProduct(product);
+    @PostMapping(value = "/save")
+    public ResponseEntity<?> saveProduct(@RequestParam String  name,
+                                         @RequestParam String  prod_description,
+                                         @RequestParam Double  price,
+                                         @RequestParam String  image,
+                                         @RequestParam Long pro_Category,
+                                         @RequestParam Integer availalbe) {
+        Product obj = productService.saveProduct(name, prod_description, price, image, pro_Category, availalbe);
 
         BaseResponseDto response = new BaseResponseDto();
         response.statusCode = 200;
