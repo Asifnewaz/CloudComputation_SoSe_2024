@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchAllCategory();
-    // this.fetchAllProduct();
+    this.fetchAllProduct();
   }
 
   fetchAllCategory() {
@@ -41,6 +41,7 @@ export class HomeComponent implements OnInit {
       .subscribe(response => {
         this.isLoading = false;
         this.productList = response.body.data;
+        console.log(this.productList);
       });
   }
 

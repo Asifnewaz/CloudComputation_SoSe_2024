@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       password: loginForm.value.password,
     };
 
-    var url = 'https://1d9d857a-4e50-4c6c-8dcf-ca3efeab783d.mock.pstmn.io/login';
+    var url = 'login';
     this.dataService.postData(url, false, formValue).subscribe((response) => {
       this.isLoading = true;
 
