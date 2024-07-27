@@ -5,6 +5,7 @@ import com.asif.cc_summer.entity.Product;
 import com.asif.cc_summer.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -22,12 +23,19 @@ public class ProductService {
         return productRepository.findById(id).orElse(null);
     }
 
-    public Product saveProduct(ProductDto productDto) {
+    public Product saveProduct(String  name,
+                               String  prod_description,
+                               Double  price,
+                               String  image,
+                               Long pro_Category,
+                               Integer availalbe) {
         Product obj = new Product();
-        obj.setName(productDto.getName());
-        obj.setPrice(productDto.getPrice());
-        obj.setFull_description(productDto.getProductDescription());
-
+        obj.setName(name);
+        obj.setPrice(price);
+        obj.setFull_description(prod_description);
+        obj.setAvailable_product(availalbe);
+        obj.setImage(image);
+        obj.setCategory_id(pro_Category);
         return productRepository.save(obj);
     }
 }
