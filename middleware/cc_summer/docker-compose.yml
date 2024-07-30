@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:9.0
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: ccsummer24
+      MYSQL_ROOT_PASSWORD: bcl9bcl9
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: springboot-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/ccsummer24?useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: bcl9bcl9
+      spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+      spring.jpa.hibernate.ddl-auto: update
+    depends_on:
+      - mysql
+
+volumes:
+  mysql-data:
