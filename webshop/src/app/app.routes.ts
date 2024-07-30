@@ -12,14 +12,15 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { UserAreaComponent } from './user-area/user-area.component';
 import { OrderStatusComponent } from './order-status/order-status.component';
 import { PaymentFormComponent } from './payment-form/payment-form.component';
+import { OrderListComponent } from './order-list/order-list.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },  //api no need
     { path: 'about', component: AboutUsComponent },  //api no need
     { path: 'contact', component: ContactUsComponent }, //api no need
-    { path: 'user-area', component: UserAreaComponent },
     { path: 'login', component: LoginComponent }, //api ready
     { path: 'register', component: RegisterComponent }, //api no need
+    { path: 'user-area', component: UserAreaComponent },
     { path: 'all-categories', component: AllCategoriesComponent }, //api ready
     { path: 'product-list', component: ProductListComponent }, //api ready
     { path: 'product-details/:product_id', component: SingleProductComponent },
@@ -27,6 +28,7 @@ export const routes: Routes = [
     { path: 'checkout', component: CheckoutComponent }, //api ready
     { path: 'payment-now/:order-id', component: PaymentFormComponent }, //api ready
     { path: 'order-status', component: OrderStatusComponent },
+    { path: 'order-list', component: OrderListComponent },
 
 ];
 
