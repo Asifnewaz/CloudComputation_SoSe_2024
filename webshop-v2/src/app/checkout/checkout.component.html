@@ -1,0 +1,81 @@
+<app-loading [isLoading]="isLoading"></app-loading>
+
+<section class="checkout-wrapper section">
+    <div class="container">
+        <form ngNativeValidate #checkoutForm="ngForm" (ngSubmit)="checkoutFormSubmit(checkoutForm)">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="checkout-steps-form-style-1">
+                        <ul>
+                            <li>
+                                <h6 class="title">Your Personal Details </h6>
+                                <section class="checkout-steps-form-content collapse show">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="single-form form-default">
+                                                <label>Address</label>
+                                                <div class="form-input form">
+                                                    <input type="text" name="address" ngModel required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="single-form form-default">
+                                                <label>City</label>
+                                                <div class="form-input form">
+                                                    <input type="text" name="city" placeholder="City" ngModel required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="single-form form-default">
+                                                <label>Post Code</label>
+                                                <div class="form-input form">
+                                                    <input type="text" name="postCode" placeholder="Post Code" ngModel
+                                                        required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="single-form form-default">
+                                                <label>Country</label>
+                                                <div class="form-input form">
+                                                    <input type="text" name="country" placeholder="Country" ngModel
+                                                        required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="checkout-sidebar">
+                        <div class="checkout-sidebar-price-table">
+                            <h5 class="title">Pricing Table</h5>
+                            <div class="sub-total-price">
+                                <div class="total-price">
+                                    <p class="value">Cart Subtotal:</p>
+                                    <p class="price">€{{totalPrice}}.00</p>
+                                </div>
+                                <div class="total-price shipping">
+                                    <p class="value">Shipping:</p>
+                                    <p class="price">Free</p>
+                                </div>
+                                <div class="total-price discount">
+                                    <p class="value">You Pay:</p>
+                                    <p class="price">€{{totalPrice}}.00</p>
+                                </div>
+                            </div>
+                            <div class="price-table-btn button">
+                                <button type="submit" class="btn btn-alt">Checkout</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
