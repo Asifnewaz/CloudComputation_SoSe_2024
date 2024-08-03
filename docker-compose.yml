@@ -1,19 +1,19 @@
 version: '3.8'
 
 services:
-  springboot-app:
-    container_name: lowTechGmbH
-    image: springbooot-app
-    restart: always
-    build:
-      context: ./middleware/cc_summer
-    ports:
-      - 8080:8080
-    environment:
-      MYSQL_HOST: mysqldb
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
-      MYSQL_PORT: 3306
+  # springboot-app:
+  #   container_name: lowTechGmbH
+  #   image: springbooot-app
+  #   restart: always
+  #   build:
+  #     context: ./middleware/cc_summer
+  #   ports:
+  #     - 8080:8080
+  #   environment:
+  #     MYSQL_HOST: mysqldb
+  #     MYSQL_USER: root
+  #     MYSQL_PASSWORD: root
+  #     MYSQL_PORT: 3306
 
   frontend:
     image: springbooot-ui
@@ -22,14 +22,14 @@ services:
       context: ./Webshop
     ports:
       - "4200:80"
-    depends_on:
-      - springboot-app
+    # depends_on:
+    #   - springboot-app
 
-  mysqldb:
-    container_name: mysqldb
-    image: mysql
-    ports:
-      - 3306:3306
-    environment:
-      MYSQL_DATABASE: ccsummer24
-      MYSQL_ROOT_PASSWORD: root
+  # mysqldb:
+  #   container_name: mysqldb
+  #   image: mysql
+  #   ports:
+  #     - 3306:3306
+  #   environment:
+  #     MYSQL_DATABASE: ccsummer24
+  #     MYSQL_ROOT_PASSWORD: root
