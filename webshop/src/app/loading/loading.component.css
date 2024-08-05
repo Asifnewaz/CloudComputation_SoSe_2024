@@ -1,0 +1,16 @@
+.loading-bg {
+    height: 100vh;
+    width: 100vw;
+    background: #ffffffe3;
+    position: fixed;
+    z-index: 999;
+  }
+  .loading-bg img {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    left: 50%;
+    top: 150px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+  }
