@@ -1,0 +1,16 @@
+{
+  "routes": [
+    "/",
+    "/about",
+    "/all-categories",
+    "/checkout",
+    "/contact",
+    "/login",
+    "/my-cart",
+    "/order-list",
+    "/order-status",
+    "/product-list",
+    "/register",
+    "/user-area"
+  ]
+}
