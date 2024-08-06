@@ -12,4 +12,10 @@ public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Long userId;
+    private String name;
+    private String address;
+    private String phone;
+    private String email;
+    private String status;
 }

@@ -23,6 +23,17 @@ public class CartService {
     public Cart save(Cart order) {
         return cartRepository.save(order);
     }
+
+    public Cart increaseQuantity( Long cartID,  Integer quantity) {
+        Optional<Cart> cart = cartRepository.findById(cartID);
+        if(cart.isPresent()) {
+            Cart updatedCart = cart.get();
+            updatedCart.setQuantity(quantity);
+            return cartRepository.save(updatedCart);
+        }
+        //update object by repository
+        return cartRepository.save(cart.get());
+    }
     public List<Cart> findAll() {
         return cartRepository.findAll();
     }
@@ -31,10 +42,9 @@ public class CartService {
         List<Cart> allData = cartRepository.findAll();
         List<Cart> cartListFilter = new ArrayList<>();
         for (Cart cart : allData) {
-            if (cart.getUser_id().equals(user_id)) {
+            if (cart.getUser_id().equals(user_id) && !cart.getOrdered()) {
                 cartListFilter.add(cart);
             }
-
         }
         List<CartListResponse> cartListResponse = new ArrayList<>();
 

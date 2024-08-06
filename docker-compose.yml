@@ -21,7 +21,7 @@ services:
     build:
       context: ./webshop-v3
     ports:
-      - "4200:80"
+      - 4200:80
     depends_on:
        - middleware
 

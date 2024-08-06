@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/cc_summer-0.0.1-SNAPSHOT.jar /app/cc_summer-0.0.1-SNAPSHOT.jar
 
 # Make port 8080 available to the world outside this container
-#EXPOSE 8080
+EXPOSE 8080
 
 # Run the jar file
 ENTRYPOINT ["java", "-jar", "/app/cc_summer-0.0.1-SNAPSHOT.jar"]

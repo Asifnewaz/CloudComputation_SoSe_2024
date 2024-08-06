@@ -16,11 +16,12 @@ public class OpenAPIConfiguration {
    @Bean
    public OpenAPI defineOpenApi() {
        Server server = new Server();
-       server.setUrl("http://localhost:8080");
-       server.setDescription("Development");
+//       server.setUrl("http://localhost:8080");
+       server.setUrl("http://34.133.122.128:8080");
+       server.setDescription("Production");
 
        Contact myContact = new Contact();
-       myContact.setName("Asif Newaz");
+       myContact.setName("Asif Newaz, Mezba Uddin, Saddam Hossain");
        myContact.setEmail("dev.asifnewaz@gmail.com");
 
        Info information = new Info()
