@@ -66,4 +66,28 @@ public class CartService {
 
         return cartListResponse;
     }
+
+    public Optional<CartListResponse> cartResponseByID(Long cartID) {
+        Optional<Cart> optionalCart = cartRepository.findById(cartID);
+
+        if (optionalCart.isPresent()) {
+            Cart cart = optionalCart.get();
+
+            Long productId = cart.getProduct_id();
+            Optional<Product> product = productRepository.findById(productId);
+
+            CartListResponse responseItem = new CartListResponse();
+            responseItem.id = cart.getId();
+            responseItem.product_id = cart.getProduct_id();
+            responseItem.quantity = cart.getQuantity();
+            if(product.isPresent()) {
+                responseItem.image = product.get().getImage();
+                responseItem.price = product.get().getPrice();
+                responseItem.name = product.get().getName();
+            }
+            return Optional.of(responseItem);
+        }
+
+        return Optional.empty();
+    }
 }

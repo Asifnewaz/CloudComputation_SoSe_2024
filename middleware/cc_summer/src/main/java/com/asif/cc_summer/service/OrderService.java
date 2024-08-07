@@ -1,6 +1,7 @@
 package com.asif.cc_summer.service;
 
 import com.asif.cc_summer.dto.response.CartListResponse;
+import com.asif.cc_summer.dto.response.OrderDetailsResponse;
 import com.asif.cc_summer.entity.Cart;
 import com.asif.cc_summer.entity.OrderEntity;
 import com.asif.cc_summer.entity.Product;
@@ -22,7 +23,7 @@ public class OrderService {
     public final OrderRepository orderRepository;
     private final CartRepository cartRepository;
 
-    public OrderEntity addService(Long userid,
+    public OrderEntity addOrder(Long userid,
                                    String name,
                                    String mobile,
                                    String email,
@@ -42,9 +43,6 @@ public class OrderService {
         orderEntity.setOrderStatus("new");
         orderEntity.setPaymentDone(false);
 
-        //update cart ordered status
-        updateOldCardAfterAnOrder(userid);
-
         List<Cart> cartListFilter = getUnOrderedCartList(userid);
         if (!cartListFilter.isEmpty()) {
             StringBuilder cartIDs = new StringBuilder();
@@ -54,9 +52,18 @@ public class OrderService {
             }
             orderEntity.setCartIDs(cartIDs.toString());
         }
+
+        //update cart ordered status
+        updateOldCardAfterAnOrder(userid);
         return orderRepository.save(orderEntity);
 
     }
+
+    public Optional<OrderEntity> getOrder(Long orderID) {
+
+        return orderRepository.findById(orderID);
+    }
+
     public Optional<OrderEntity> orderPaymentDone(Long orderID) {
         Optional<OrderEntity> order = orderRepository.findById(orderID);
         if (order.isPresent()) {
@@ -83,13 +90,13 @@ public class OrderService {
 
     private List<Cart> getUnOrderedCartList(Long userid) {
         List<Cart> allData = cartRepository.findAll();
-        List<Cart> cartListFilter = new ArrayList<>();
+        List<Cart> unorderedCarts = new ArrayList<>();
         for (Cart cart : allData) {
-            if (cart.getUser_id().equals(userid)) {
-                cartListFilter.add(cart);
+            if (cart.getUser_id().equals(userid) && !cart.getOrdered() ) {
+                unorderedCarts.add(cart);
             }
         }
-        return cartListFilter;
+        return unorderedCarts;
     }
 
     private void updateOldCardAfterAnOrder(Long userid) {

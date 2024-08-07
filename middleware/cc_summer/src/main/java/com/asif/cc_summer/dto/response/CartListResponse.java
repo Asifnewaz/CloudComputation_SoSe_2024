@@ -13,5 +13,4 @@ public class CartListResponse {
     public Integer quantity;
     public String image;
 
-
 }
