@@ -25,6 +25,7 @@ public class CartController {
         orderedProduct.setUser_id(user_id);
         orderedProduct.setProduct_id(product_id);
         orderedProduct.setQuantity(quantity);
+        orderedProduct.setOrdered(false);
         Cart cardResponse = cartService.save(orderedProduct);
 
         BaseResponseDto response = new BaseResponseDto();
@@ -41,6 +42,15 @@ public class CartController {
         BaseResponseDto response = new BaseResponseDto();
         response.statusCode = 200;
         response.data = list;
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping(value="/increaseQuantity", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> cartList(@RequestParam  Long cartID, @RequestParam Integer quantity){
+        Cart cart = cartService.increaseQuantity(cartID, quantity);
+        BaseResponseDto response = new BaseResponseDto();
+        response.statusCode = 200;
+        response.data = cart;
         return ResponseEntity.ok(response);
     }
 

@@ -15,4 +15,5 @@ public class Cart {
     private Long product_id;
     private Long user_id;
     private Integer quantity;
+    private Boolean ordered;
 }

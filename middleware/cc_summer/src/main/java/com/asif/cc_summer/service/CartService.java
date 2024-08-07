@@ -23,6 +23,17 @@ public class CartService {
     public Cart save(Cart order) {
         return cartRepository.save(order);
     }
+
+    public Cart increaseQuantity( Long cartID,  Integer quantity) {
+        Optional<Cart> cart = cartRepository.findById(cartID);
+        if(cart.isPresent()) {
+            Cart updatedCart = cart.get();
+            updatedCart.setQuantity(quantity);
+            return cartRepository.save(updatedCart);
+        }
+        //update object by repository
+        return cartRepository.save(cart.get());
+    }
     public List<Cart> findAll() {
         return cartRepository.findAll();
     }
@@ -31,10 +42,9 @@ public class CartService {
         List<Cart> allData = cartRepository.findAll();
         List<Cart> cartListFilter = new ArrayList<>();
         for (Cart cart : allData) {
-            if (cart.getUser_id().equals(user_id)) {
+            if (cart.getUser_id().equals(user_id) && !cart.getOrdered()) {
                 cartListFilter.add(cart);
             }
-
         }
         List<CartListResponse> cartListResponse = new ArrayList<>();
 
@@ -55,5 +65,29 @@ public class CartService {
         }
 
         return cartListResponse;
+    }
+
+    public Optional<CartListResponse> cartResponseByID(Long cartID) {
+        Optional<Cart> optionalCart = cartRepository.findById(cartID);
+
+        if (optionalCart.isPresent()) {
+            Cart cart = optionalCart.get();
+
+            Long productId = cart.getProduct_id();
+            Optional<Product> product = productRepository.findById(productId);
+
+            CartListResponse responseItem = new CartListResponse();
+            responseItem.id = cart.getId();
+            responseItem.product_id = cart.getProduct_id();
+            responseItem.quantity = cart.getQuantity();
+            if(product.isPresent()) {
+                responseItem.image = product.get().getImage();
+                responseItem.price = product.get().getPrice();
+                responseItem.name = product.get().getName();
+            }
+            return Optional.of(responseItem);
+        }
+
+        return Optional.empty();
     }
 }
