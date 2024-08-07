@@ -20,12 +20,11 @@ export class AllCategoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchAllCategory();
-    // this.fetchAllProduct();
   }
 
   fetchAllCategory() {
     this.isLoading = true;
-    var url = 'categorylist';
+    var url = 'category/get';
     this.dataService.getData(url)
       .subscribe(response => {
         this.isLoading = false;

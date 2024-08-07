@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { DataServiceService } from '../services/data-service.service';
 import { LoadingComponent } from '../loading/loading.component';
+import { SessionServiceService } from '../services/session-service.service';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
   public category: any = [];
   public productList: any = [];
 
-  constructor(private dataService: DataServiceService) { }
+  constructor(private dataService: DataServiceService, private session: SessionServiceService) { }
 
   ngOnInit(): void {
     this.fetchAllCategory();
@@ -26,7 +27,7 @@ export class HomeComponent implements OnInit {
 
   fetchAllCategory() {
     this.isLoading = true;
-    var url = 'categorylist';
+    var url = 'category/get';
     this.dataService.getData(url)
       .subscribe(response => {
         this.isLoading = false;
@@ -36,13 +37,35 @@ export class HomeComponent implements OnInit {
 
   fetchAllProduct() {
     this.isLoading = true;
-    var url = 'productist';
+    var url = 'product/get';
     this.dataService.getData(url)
       .subscribe(response => {
         this.isLoading = false;
         this.productList = response.body.data;
-        console.log(this.productList);
       });
+  }
+
+  addItemToCart(product_id: number, quantity: number): void {
+    var userId = this.session.getAccessToken();
+
+    var postData = {
+      user_id: userId,
+      product_id: product_id,
+      quantity: quantity
+    }
+
+    console.log(postData);
+
+    var url = 'cart/addToCart';
+    this.dataService.postDataAsForm(url, false, postData).subscribe((response) => {
+      this.isLoading = true;
+
+      if (response) {
+        this.isLoading = false;
+        console.log(response);
+
+      }
+    });
   }
 
 }

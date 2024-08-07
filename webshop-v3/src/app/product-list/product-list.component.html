@@ -1,3 +1,5 @@
+<app-loading [isLoading]="isLoading"></app-loading>
+
 <section class="trending-product section">
     <div class="container">
         <div class="row">
@@ -9,26 +11,25 @@
         </div>
 
         <div class="row">
-            <div *ngFor="let item of [1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8]" class="col-lg-3 col-md-6 col-12">
+            <div *ngFor="let item of productListSorted" class="col-lg-3 col-md-6 col-12">
                 <div class="single-product">
                     <div class="product-image">
-                        <img src="https://fakeimg.pl/242x242/503ec2/121111?font=noto-serif" alt="#">
+                        <img src="https://storage.googleapis.com/low_tech_gmbh_storage/{{item.image}}" alt="#">
                         <div class="button">
-                            <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
+                            <a (click)="addItemToCart(1,3)" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
                         </div>
                     </div>
                     <div class="product-info">
-                        <span class="category">Watches </span>
+                        <span class="category">{{item.category_name}}</span>
                         <h4 class="title">
-                            <a [routerLink]="['/product-details']">Xiaomi Mi Band 5</a>
+                            <a>{{item.name}}</a>
                         </h4>
                         <div class="price">
-                            <span>$199.00</span>
+                            <span>€{{item.price}}.00</span>
                         </div>
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
 </section>

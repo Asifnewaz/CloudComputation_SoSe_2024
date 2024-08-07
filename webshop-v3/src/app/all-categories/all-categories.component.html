@@ -12,8 +12,9 @@
         </div>
         <div class="row">
             <div *ngFor="let item of category" class="col-4 col-md-2">
-                <a [routerLink]="['/product-by-category/',item.id]" class="category-image-a">
-                    <img src="{{item.image}}" class="category-image" alt="#">
+                <a [routerLink]="['/product-list/',item.id]" class="category-image-a">
+                    <img src="https://storage.googleapis.com/low_tech_gmbh_storage/{{item.image}}"
+                        class="category-image" alt="#">
                 </a>
             </div>
         </div>

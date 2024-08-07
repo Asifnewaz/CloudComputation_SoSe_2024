@@ -11,33 +11,52 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './single-product.component.css'
 })
 export class SingleProductComponent implements OnInit {
-  // var postingId = this.route.snapshot.paramMap.get('id');
   public isLoading: boolean = false;
   public productDetails: any = "";
+  public productList: any = [];
+
 
   constructor(private dataService: DataServiceService, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.fetchProductDetails();
+    this.fetchAllProduct();
   }
 
-  fetchProductDetails() {
-    var url = 'productWithID';
-    var productInfo = {
-      product_id: this.router.snapshot.paramMap.get('product_id')
-    }
+  // fetchProductDetails() {
+  //   var url = 'product/productWithID';
 
-    this.dataService.postData(url, false, productInfo).subscribe((response) => {
-      this.isLoading = true;
+  //   var productInfo = {
+  //     productID: this.router.snapshot.paramMap.get('product_id')
+  //   }
 
-      if (response) {
+  //   this.dataService.postData(url, false, productInfo).subscribe((response) => {
+  //     this.isLoading = true;
+
+  //     if (response) {
+  //       // console.log(response);
+  //       this.isLoading = false;
+  //       // this.productDetails = response.body.data;
+  //     }
+  //   });
+  // }
+
+  fetchAllProduct() {
+
+    var productId = this.router.snapshot.paramMap.get('product_id');
+
+    this.isLoading = true;
+    var url = 'product/get';
+    this.dataService.getData(url)
+      .subscribe(response => {
         this.isLoading = false;
-        if (response.body.status == 200) {
-          this.productDetails = response.body.data;
-          console.log(this.productDetails);
+        this.productDetails = response.body.data;
+        for (let item of this.productDetails) {
+          if (item.id == productId) {
+            this.productDetails = item;
+          }
         }
-      }
-    });
+        console.log(this.productDetails);
+      });
   }
 
 }

@@ -1,0 +1,18 @@
+.search-popup {
+    position: absolute;
+    margin-top: 40px;
+    background: #fff;
+    border: 1px solid #ccc;
+    width: 297px;
+    border-radius: 4px;
+    display: none;
+}
+
+.searchSuggestion{
+    display: block;
+}
+
+.search-popup li {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;  
+}

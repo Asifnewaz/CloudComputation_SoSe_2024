@@ -41,24 +41,32 @@ export class LoginComponent implements OnInit {
       password: loginForm.value.password,
     };
 
-    var url = 'login';
-    this.dataService.postData(url, false, formValue).subscribe((response) => {
-      this.isLoading = true;
+    var sessionData = {
+      userID: 1,
+      name: loginForm.value.username,
+      image: ""
+    };
+    this.session.storeSession(sessionData);
 
-      if (response) {
-        this.isLoading = false;
-        console.log(response);
-        if (response.body.status == 200) {
-          var sessionData = {
-            userID: response.body.data.userID,
-            name: response.body.data.name,
-            image: response.body.data.image
-          };
-          this.session.storeSession(sessionData);
-        } else {
-          this.errorMessage = response.body.error_message;
-        }
-      }
-    });
+
+    // var url = 'authentication/login';
+    // this.dataService.postData(url, false, formValue).subscribe((response) => {
+    //   this.isLoading = true;
+
+    //   if (response) {
+    //     this.isLoading = false;
+    //     console.log(response);
+    //     if (response.body.error_message == 200) {
+    //       var sessionData = {
+    //         userID: response.body.data.userID,
+    //         name: response.body.data.name,
+    //         image: response.body.data.image
+    //       };
+    //       this.session.storeSession(sessionData);
+    //     } else {
+    //       this.errorMessage = response.body.error_message;
+    //     }
+    //   }
+    // });
   }
 }

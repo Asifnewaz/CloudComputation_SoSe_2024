@@ -22,7 +22,7 @@ export const routes: Routes = [
     { path: 'register', component: RegisterComponent }, //api no need
     { path: 'user-area', component: UserAreaComponent },
     { path: 'all-categories', component: AllCategoriesComponent }, //api ready
-    { path: 'product-list', component: ProductListComponent }, //api ready
+    { path: 'product-list/:category_id', component: ProductListComponent }, //api ready
     { path: 'product-details/:product_id', component: SingleProductComponent },
     { path: 'my-cart', component: MyCartComponent }, //api ready
     { path: 'checkout', component: CheckoutComponent }, //api ready
