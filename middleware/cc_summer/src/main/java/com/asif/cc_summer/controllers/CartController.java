@@ -35,6 +35,20 @@ public class CartController {
         return ResponseEntity.ok(response);
 
     }
+
+    @PostMapping(value ="/deleteCart", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> deleteCart(@RequestParam Long user_id,
+                                       @RequestParam Long cart_id) {
+
+        Boolean cardResponse = cartService.deleteCart(cart_id);
+
+        BaseResponseDto response = new BaseResponseDto();
+        response.statusCode = 200;
+        response.success_message = "Cart Deleted Successfully";
+//        response.data = cardResponse;
+        return ResponseEntity.ok(response);
+    }
+
     @PostMapping(value="/cartList", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> cartList(@RequestParam Long user_id){
         List<CartListResponse> list = cartService.cartListResponse(user_id);

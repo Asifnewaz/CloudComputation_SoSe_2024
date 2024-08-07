@@ -24,6 +24,11 @@ public class CartService {
         return cartRepository.save(order);
     }
 
+    public boolean deleteCart(Long cartID){
+        cartRepository.deleteById(cartID);
+        return true;
+    }
+
     public Cart increaseQuantity( Long cartID,  Integer quantity) {
         Optional<Cart> cart = cartRepository.findById(cartID);
         if(cart.isPresent()) {
