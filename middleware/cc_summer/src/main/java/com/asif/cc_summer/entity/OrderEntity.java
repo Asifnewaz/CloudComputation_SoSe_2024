@@ -18,4 +18,8 @@ public class OrderEntity {
     private String phone;
     private String email;
     private String status;
+    private String cartIDs;
+    private String dateTime;
+    private Boolean paymentDone;
+    private String orderStatus;
 }

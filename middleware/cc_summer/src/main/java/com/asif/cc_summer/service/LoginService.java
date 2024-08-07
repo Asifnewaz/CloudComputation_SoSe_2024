@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -38,5 +39,17 @@ public class LoginService {
         }
 
         return  credentialMatched;
+    }
+
+    public Optional<UserEntity> getUserDetails(String Username, String Password) {
+
+        List<UserEntity> allData = loginRepository.findAll();
+
+        for (UserEntity login : allData) {
+            if (login.getUser_name().equals(Username) && login.getPassword().equals(Password)) {
+                return Optional.of(login);
+            }
+        }
+        return Optional.empty();
     }
 }
