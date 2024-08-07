@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataServiceService } from '../services/data-service.service';
 import { LoadingComponent } from '../loading/loading.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SessionServiceService } from '../services/session-service.service';
 
 @Component({
   selector: 'app-single-product',
@@ -16,7 +17,7 @@ export class SingleProductComponent implements OnInit {
   public productList: any = [];
 
 
-  constructor(private dataService: DataServiceService, private router: ActivatedRoute) { }
+  constructor(private dataService: DataServiceService, private router: ActivatedRoute, private session: SessionServiceService) { }
 
   ngOnInit(): void {
     this.fetchAllProduct();
@@ -57,6 +58,28 @@ export class SingleProductComponent implements OnInit {
         }
         console.log(this.productDetails);
       });
+  }
+
+  addItemToCart(product_id: number, quantity: number): void {
+    var userId = this.session.getAccessToken();
+
+    var postData = {
+      user_id: userId,
+      product_id: product_id,
+      quantity: quantity
+    }
+
+
+    var url = 'cart/addToCart';
+    this.dataService.postDataAsForm(url, false, postData).subscribe((response) => {
+      this.isLoading = true;
+
+      if (response) {
+        this.isLoading = false;
+        console.log(response);
+
+      }
+    });
   }
 
 }

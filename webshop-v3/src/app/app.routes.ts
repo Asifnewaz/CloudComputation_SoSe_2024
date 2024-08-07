@@ -27,7 +27,7 @@ export const routes: Routes = [
     { path: 'my-cart', component: MyCartComponent }, //api ready
     { path: 'checkout', component: CheckoutComponent }, //api ready
     { path: 'payment-now/:order-id', component: PaymentFormComponent }, //api ready
-    { path: 'order-status', component: OrderStatusComponent },
+    { path: 'order-status/:order_id', component: OrderStatusComponent },
     { path: 'order-list', component: OrderListComponent },
 
 ];

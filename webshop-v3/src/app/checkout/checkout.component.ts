@@ -22,52 +22,63 @@ export class CheckoutComponent implements OnInit {
   constructor(private dataService: DataServiceService, private session: SessionServiceService, private cartService: ShoppingCartService, private router: Router) { }
 
   ngOnInit(): void {
-    this.getTotalPrice();
+    this.fetchAllProductInMyCart();
   }
 
-  getTotalPrice() {
-    var url = 'cartList';
+  fetchAllProductInMyCart() {
+    var url = 'cart/cartList';
 
-    var userID = {
-      userID: this.session.getAccessToken()
+    var userId = this.session.getAccessToken();
+
+    var postData = {
+      user_id: userId
     }
 
-    this.dataService.postData(url, false, userID).subscribe((response) => {
+    this.dataService.postDataAsForm(url, false, postData).subscribe((response) => {
       this.isLoading = true;
 
       if (response) {
         this.isLoading = false;
-        if (response.body.status == 200) {
-          console.log(response);
-          this.allProductInMyCart = response.body.data;
-          this.totalPrice = this.cartService.getTotalPrice(this.allProductInMyCart);
-          console.log(this.totalPrice);
+        this.allProductInMyCart = response.body.data;
+
+
+        for (let item of this.allProductInMyCart) {
+          this.totalPrice += item.price;
         }
+
       }
     });
   }
 
   checkoutFormSubmit(checkoutForm: NgForm) {
+
+    var userId = this.session.getAccessToken();
+
+
     var formValue = {
+      userid: userId,
       address: checkoutForm.value.address,
-      city: checkoutForm.value.city,
-      postCode: checkoutForm.value.postCode,
-      country: checkoutForm.value.country
+      name: checkoutForm.value.city,
+      mobile_number: checkoutForm.value.postCode,
+      email_address: checkoutForm.value.email_address
     };
 
-    var url = 'makeOrder';
-    this.dataService.postData(url, false, formValue).subscribe((response) => {
+    var url = 'order/makeOrder';
+
+    this.dataService.postDataAsForm(url, false, formValue).subscribe((response) => {
       this.isLoading = true;
 
       if (response) {
         this.isLoading = false;
-        console.log(response);
-        if (response.body.status == 200) {
-          var orderId = 1234;
-          this.router.navigate(['/payment-now', orderId]);
-        }
+
+        formValue.email_address;
+        
+        this.router.navigate(['/payment-now', response.body.data.id]);
+
       }
     });
+
+
   }
 
 }

@@ -13,20 +13,18 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Order</th>
                             <th scope="col">Order date</th>
                             <th scope="col">Status</th>
                             <th scope="col">Details</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let item of [1,2,3,4,5,6,7,8,9]; let i">
-                            <th scope="row">{{i}}</th>
-                            <td>Laptop, Headphone...</td>
-                            <td>11 July, 2024</td>
-                            <td>Delivered</td>
+                        <tr *ngFor="let item of orderList let i">
+                            <th scope="row">{{item.id}}</th>
+                            <td>{{item.dateTime}}</td>
+                            <td>Payment success</td>
                             <td>
-                                <a [routerLink]="['/order-status']" class="btn btn-warning btn-sm"><i
+                                <a [routerLink]="['/order-status/',item.id]" class="btn btn-warning btn-sm"><i
                                         class="fa-solid fa-eye"></i> Click to details</a>
                             </td>
                         </tr>

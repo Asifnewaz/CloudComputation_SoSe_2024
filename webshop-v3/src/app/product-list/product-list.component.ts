@@ -44,9 +44,24 @@ export class ProductListComponent {
 
   addItemToCart(product_id: number, quantity: number): void {
     var userId = this.session.getAccessToken();
-    console.log(userId);
-    console.log(product_id);
-    console.log(quantity);
+
+    var postData = {
+      user_id: userId,
+      product_id: product_id,
+      quantity: quantity
+    }
+
+
+    var url = 'cart/addToCart';
+    this.dataService.postDataAsForm(url, false, postData).subscribe((response) => {
+      this.isLoading = true;
+
+      if (response) {
+        this.isLoading = false;
+        console.log(response);
+
+      }
+    });
   }
 
 }

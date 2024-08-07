@@ -5,8 +5,12 @@
                 <article class="card">
                     <header class="card-header"> My Orders / Tracking </header>
                     <div class="card-body">
-                        <h6>Order ID: OD45345345435</h6>
-                        
+                        <h6 class="mb-1">Order ID: {{orderList.id}}</h6>
+                        <p>Address: {{orderList.address}}</p>
+                        <p>Name : {{orderList.name}}</p>
+                        <p>Phone: {{orderList.phone}}</p>
+                        <p>Email address: {{orderList.email}}</p>
+
                         <div class="track">
                             <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span
                                     class="text">Order confirmed</span> </div>
@@ -21,36 +25,19 @@
                         </div>
                         <hr>
                         <ul class="row">
-                            <li class="col-md-4">
+                            <li *ngFor="let item of productList" class="col-md-4">
                                 <figure class="itemside mb-3">
-                                    <div class="aside"><img src="https://i.imgur.com/iDwDQ4o.png" class="img-sm border">
+                                    <div class="aside"><img
+                                            src="https://storage.googleapis.com/low_tech_gmbh_storage/{{item.image}}"
+                                            class="img-sm border">
                                     </div>
                                     <figcaption class="info align-self-center">
-                                        <p class="title">Dell Laptop with 500GB HDD <br> 8GB RAM</p> <span
-                                            class="text-muted">$950 </span>
+                                        <p class="title">{{item.name}}</p> <span class="text-muted">€{{item.price}}
+                                        </span>
                                     </figcaption>
                                 </figure>
                             </li>
-                            <li class="col-md-4">
-                                <figure class="itemside mb-3">
-                                    <div class="aside"><img src="https://i.imgur.com/tVBy5Q0.png" class="img-sm border">
-                                    </div>
-                                    <figcaption class="info align-self-center">
-                                        <p class="title">HP Laptop with 500GB HDD <br> 8GB RAM</p> <span
-                                            class="text-muted">$850 </span>
-                                    </figcaption>
-                                </figure>
-                            </li>
-                            <li class="col-md-4">
-                                <figure class="itemside mb-3">
-                                    <div class="aside"><img src="https://i.imgur.com/Bd56jKH.png" class="img-sm border">
-                                    </div>
-                                    <figcaption class="info align-self-center">
-                                        <p class="title">ACER Laptop with 500GB HDD <br> 8GB RAM</p> <span
-                                            class="text-muted">$650 </span>
-                                    </figcaption>
-                                </figure>
-                            </li>
+
                         </ul>
                         <hr>
                     </div>

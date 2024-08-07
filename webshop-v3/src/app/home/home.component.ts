@@ -54,7 +54,6 @@ export class HomeComponent implements OnInit {
       quantity: quantity
     }
 
-    console.log(postData);
 
     var url = 'cart/addToCart';
     this.dataService.postDataAsForm(url, false, postData).subscribe((response) => {
