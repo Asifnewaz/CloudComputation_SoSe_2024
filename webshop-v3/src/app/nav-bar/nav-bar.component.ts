@@ -30,7 +30,7 @@ export class NavBarComponent implements OnInit {
     this.sessiondata = this.session.getSessiondata()
     this.name = this.sessiondata.userName;
     // console.log(this.sessiondata);
-    // this.getAllProducts();
+    this.getAllProducts();
   }
 
   logOut() {
@@ -50,23 +50,11 @@ export class NavBarComponent implements OnInit {
   search(term: string): void {
     console.log(term);
 
-    // if (term.length > 0 && term.length < 2) {
-    //   this.productList = this.getAllProducts();
-    // }
-
-
-
     if (term.length > 0) {
       this.searchSuggestion = "searchSuggestion";
-
-      
-
-
     } else {
       this.searchSuggestion = "";
     }
-
-
   }
 
 

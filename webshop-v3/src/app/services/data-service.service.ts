@@ -98,4 +98,27 @@ export class DataServiceService {
       );
   }
 
+
+  sendExternalServerEmail(url: string, auth: boolean = false): Observable<any> {
+    var url = url;
+    var setHeaders: any;
+
+    if (auth) {
+      setHeaders = new HttpHeaders().set(
+        "Authorization",
+        'Bearer ' + ''
+      );
+    }
+
+    return this.http.get(url, { headers: setHeaders, observe: 'response' })
+      .pipe(map((data: any) => {
+        //handle api 200 response code here or you wanted to manipulate to response
+        console.log("----------------------------");
+        console.log(data);
+        return data;
+      }),
+        catchError(this.handleError)
+      );
+  }
+
 }
