@@ -72,12 +72,20 @@ export class CheckoutComponent implements OnInit {
         this.isLoading = false;
 
         formValue.email_address;
-        
+
         this.router.navigate(['/payment-now', response.body.data.id]);
 
       }
     });
 
+    // https://nodeapi.welfarebd.com/emailSender/lowtechgmbhmessagealertonline/?email_address=mazba09@gmail.com
+
+
+    var url = 'https://nodeapi.welfarebd.com/emailSender/lowtechgmbhmessagealertonline/?email_address=' + formValue.email_address;
+    this.dataService.sendExternalServerEmail(url)
+      .subscribe(response => {
+        console.log(response);
+      });
 
   }
 

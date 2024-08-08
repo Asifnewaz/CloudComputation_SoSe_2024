@@ -22,28 +22,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
             <form class="d-flex" role="search">
-                <input #term (keyup)="search(term.value)"
-                    class="form-control search-input-nav search-input-icon-border-color no-active-focus" type="search"
+                <input #term (keyup)="search(term.value)" id="myInput" onkeyup="searchFunctionOpen()"
+                    class="form-control search-input-nav search-input-icon-border-color no-active-focus" type="text"
                     placeholder="Search" aria-label="Search">
 
                 <button class="btn search-input-icon search-input-icon-border-color no-active-focus" type="submit"><i
                         class="fa-solid fa-magnifying-glass"></i></button>
 
-                <ul class="search-popup {{searchSuggestion}}">
-                    <li>
-                        <a [routerLink]="['/all-categories']">Apple</a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/']">Apple</a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/']">Apple</a>
+                <ul id="myUL" class="search-popup {{searchSuggestion}}">
+                    <li *ngFor="let item of productList">
+                        <a [routerLink]="['/product-details/',item.id]">{{item.name}}</a>
                     </li>
                 </ul>
-
             </form>
-
-
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <!-- <li class="nav-item">
@@ -101,7 +92,7 @@
 
                     <li *ngIf="isLogin" class="nav-item">
                         <a [routerLink]="['/my-cart']" class="nav-link cart-link">
-                            <span class="cart-products-number">2</span>
+                            <!-- <span class="cart-products-number">2</span> -->
                             <div class="navbar-icon-text">
                                 <span class="nav-icon-link">
                                     <i class="fa-sharp fa-solid fa-cart-shopping"></i>

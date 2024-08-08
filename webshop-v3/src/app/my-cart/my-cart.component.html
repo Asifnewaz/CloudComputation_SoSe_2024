@@ -31,14 +31,27 @@
                                         </h5>
                                     </td>
                                     <td>
-                                        <div class="count-input">
+                                        <!-- <div class="count-input">
                                             <select class="form-control">
                                                 <option *ngFor="let opt of [1,2,3,4,5]" [value]="opt"
                                                     [selected]="opt == item.quantity">
                                                     {{opt}}
                                                 </option>
                                             </select>
+                                        </div> -->
+
+                                        <div class="count-input">
+                                            <button (click)="addOneMore(item.id)"
+                                                class="btn btn-primary btn-sm">+</button>
+
+                                            <span class="item-number-my-cart">{{item.quantity}}</span>
+
+                                            <button (click)="addMinusOne(item.id)"
+                                                class="btn btn-warning btn-sm">-</button>
+
                                         </div>
+                                        <p>In stock: {{item.available}}</p>
+
                                     </td>
                                     <td>
                                         <p>€{{item.price}}.00</p>
@@ -47,7 +60,7 @@
                                         <p>€{{item.price*item.quantity}}.00</p>
                                     </td>
                                     <td>
-                                        <a (click)="removeItemFromCart(item.id)" class="remove-item" >
+                                        <a (click)="removeItemFromCart(item.id)" class="remove-item">
                                             <i class="fa-light fa-xmark"></i>
                                         </a>
                                     </td>

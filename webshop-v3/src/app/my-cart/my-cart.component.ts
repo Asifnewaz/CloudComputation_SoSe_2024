@@ -6,6 +6,7 @@ import { SessionServiceService } from '../services/session-service.service';
 import { LoadingComponent } from '../loading/loading.component';
 import { ShoppingCartService } from '../services/shopping-cart.service';
 import { NgModel, ReactiveFormsModule } from '@angular/forms';
+import { pid } from 'process';
 
 @Component({
   selector: 'app-my-cart',
@@ -27,6 +28,7 @@ export class MyCartComponent implements OnInit {
   }
 
   fetchAllProductInMyCart() {
+    this.totalPrice = 0;
     var url = 'cart/cartList';
 
 
@@ -43,19 +45,14 @@ export class MyCartComponent implements OnInit {
         this.isLoading = false;
         this.allProductInMyCart = response.body.data;
 
-
         for (let item of this.allProductInMyCart) {
-          this.totalPrice += item.price;
+          this.totalPrice += (item.price * item.quantity);
         }
 
       }
     });
   }
 
-  changeQuantity(quantity: any): void {
-    // this.selectedTeam = quantity;
-    // console.log(quantity);
-  }
 
   removeItemFromCart(itemId: any): void {
     var url = 'cart/deleteCart';
@@ -76,6 +73,74 @@ export class MyCartComponent implements OnInit {
 
       }
     });
+  }
+
+
+  addOrMinusItemToCart(cartID: number, quantity: number): void {
+
+    var postData = {
+      cartID: cartID,
+      quantity: quantity
+    }
+
+
+    var url = 'cart/increaseQuantity';
+    this.dataService.postDataAsForm(url, false, postData).subscribe((response) => {
+      this.isLoading = true;
+
+      if (response) {
+        this.isLoading = false;
+        console.log(response);
+
+      }
+    });
+  }
+
+  addOneMore(pId: any) {
+    var getExistingQuantity;
+    var isQuantityAvailable;
+    var isProductAvailable;
+
+    console.log(this.allProductInMyCart);
+
+    for (let item of this.allProductInMyCart) {
+      if (item.id == pId) {
+        getExistingQuantity = item.quantity;
+        isQuantityAvailable = item.quantity;
+        isProductAvailable = item.available;
+      }
+    }
+
+    if (isQuantityAvailable < isProductAvailable) {
+      this.addOrMinusItemToCart(pId, getExistingQuantity + 1);
+      this.fetchAllProductInMyCart();
+    } else {
+      alert("product out of stock!!");
+    }
+
+  }
+
+  addMinusOne(pId: any) {
+    var getExistingQuantity;
+    var isQuantityAvailable;
+    var isProductAvailable;
+
+    console.log(this.allProductInMyCart);
+
+    for (let item of this.allProductInMyCart) {
+      if (item.id == pId) {
+        getExistingQuantity = item.quantity;
+        isQuantityAvailable = item.quantity;
+        isProductAvailable = item.available;
+      }
+    }
+
+    if (getExistingQuantity > 1) {
+      this.addOrMinusItemToCart(pId, getExistingQuantity - 1);
+      this.fetchAllProductInMyCart();
+    } else {
+      alert("Invalid action!!");
+    }
   }
 
 
