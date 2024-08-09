@@ -1,0 +1,51 @@
+<app-loading [isLoading]="isLoading"></app-loading>
+
+<section class="item-details section">
+    <div class="container">
+        <div class="top-area">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12 col-12">
+                    <div class="product-images">
+                        <main id="gallery">
+                            <div class="main-img">
+                                <img src="https://storage.googleapis.com/low_tech_gmbh_storage/{{productDetails.image}}"
+                                    alt="#">
+                            </div>
+                        </main>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12 col-12">
+                    <div class="product-info">
+                        <h2 class="title">{{productDetails.name}}</h2>
+                        <h3 class="price">€{{productDetails.price}}.00</h3>
+
+                        <div class="bottom-content">
+                            <div class="row align-items-end">
+                                <div class="col-lg-4 col-md-4 col-12">
+                                    <div class="button cart-button">
+                                        <button (click)="addItemToCart(productDetails.id,1)" class="button-adc btn"
+                                            style="width: 100%;">Add to Cart</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-details-info">
+            <div class="single-block">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="info-body custom-responsive-margin">
+                            <h4>Details</h4>
+                            <p>{{productDetails.full_description}}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

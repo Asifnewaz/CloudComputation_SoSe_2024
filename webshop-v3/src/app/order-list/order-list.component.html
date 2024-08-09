@@ -1,0 +1,37 @@
+<div class="account-login section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Your order</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 col-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Order date</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of orderList let i">
+                            <th scope="row">{{item.id}}</th>
+                            <td>{{item.dateTime}}</td>
+                            <td>Payment success</td>
+                            <td>
+                                <a [routerLink]="['/order-status/',item.id]" class="btn btn-warning btn-sm"><i
+                                        class="fa-solid fa-eye"></i> Click to details</a>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

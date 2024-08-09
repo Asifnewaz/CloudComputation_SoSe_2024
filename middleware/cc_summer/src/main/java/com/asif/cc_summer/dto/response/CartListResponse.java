@@ -12,6 +12,6 @@ public class CartListResponse {
     public Double price;
     public Integer quantity;
     public String image;
-
+    public Integer available;
 
 }

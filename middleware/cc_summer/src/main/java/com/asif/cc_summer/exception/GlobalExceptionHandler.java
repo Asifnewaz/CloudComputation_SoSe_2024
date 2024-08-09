@@ -1,5 +1,6 @@
 package com.asif.cc_summer.exception;
 
+import com.asif.cc_summer.dto.response.BaseResponseDto;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
@@ -32,7 +33,9 @@ public class GlobalExceptionHandler {
 //        var response = Response.builder();
 //        response.status(ResponseStatus.ERROR);
 //        response.message("Internal server error. Please contract CloudFrame support team.");
-
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error Occrued");
+        BaseResponseDto response = new BaseResponseDto();
+        response.statusCode = 405;
+        response.error_message = "Exception Occurred";
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
 }

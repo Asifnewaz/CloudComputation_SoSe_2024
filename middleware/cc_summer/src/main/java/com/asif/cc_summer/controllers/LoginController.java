@@ -29,6 +29,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/authentication")
@@ -50,6 +52,7 @@ public class LoginController {
     @PostMapping(value = "/login")
     public ResponseEntity<?> login(@RequestParam String username, @RequestParam String password) {
         Boolean credentialMatched = loginService.verifyLogin(username, password);
+        Optional<UserEntity> obj = loginService.getUserDetails(username, password);
 
         BaseResponseDto response = new BaseResponseDto();
         if (credentialMatched) {
@@ -58,6 +61,10 @@ public class LoginController {
         } else {
             response.statusCode = 400;
             response.error_message = "Invalid username or password";
+        }
+        if (obj.isPresent()) {
+            UserEntity user = obj.get();
+            response.data = obj;
         }
         return ResponseEntity.ok(response);
     }
