@@ -21,6 +21,22 @@ public class CartService {
     private final ProductRepository productRepository;
 
     public Cart save(Cart order) {
+        Long productID = order.getProduct_id();
+        if (productID != null) {
+            Cart existingCart = order;
+            boolean isExist = false;
+            List<Cart> cartList = cartRepository.findAll();
+            for (Cart cart : cartList) {
+                if (cart.getUser_id().equals(order.getUser_id()) && !cart.getOrdered() && cart.getProduct_id().equals(productID)) {
+                    existingCart = cart;
+                    isExist = true;
+                }
+            }
+            if(isExist) {
+                existingCart.setQuantity(existingCart.getQuantity() + order.getQuantity());
+                return cartRepository.save(existingCart);
+            }
+        }
         return cartRepository.save(order);
     }
 
@@ -65,6 +81,7 @@ public class CartService {
                 responseItem.image = product.get().getImage();
                 responseItem.price = product.get().getPrice();
                 responseItem.name = product.get().getName();
+                responseItem.available = product.get().getAvailable_product();
             }
             cartListResponse.add(responseItem);
         }
